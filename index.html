@@ -3,28 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Digitalia — Contact</title>
+    <title>Digitalia — Imène GOUBRID</title>
     <style>
-      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:#f7f7fb;color:#111}
-      .wrap{max-width:680px;margin:6rem auto;padding:2rem;background:#fff;border-radius:10px;box-shadow:0 8px 30px rgba(18,25,50,0.08)}
-      h1{margin:0 0 0.5rem;color:#0b1f3a}
-      h2{margin:0 0 1rem;font-weight:600;color:#123}
-      p{line-height:1.6}
-      a.button{display:inline-block;margin-top:1rem;padding:0.6rem 1rem;background:#0b76ef;color:#fff;border-radius:6px;text-decoration:none}
-      footer{margin-top:2rem;font-size:0.9rem;color:#555}
+      :root{--bg:#f4f6fb;--card:#ffffff;--accent:#0b76ef;--accent-2:#084a9b;--muted:#6b7280}
+      *{box-sizing:border-box}
+      body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#0b1f3a}
+      .container{max-width:980px;margin:3.5rem auto;padding:1rem}
+      .card{background:var(--card);border-radius:12px;padding:2rem;box-shadow:0 14px 40px rgba(11,19,35,0.06)}
+      .grid{display:grid;grid-template-columns:220px 1fr;gap:1.5rem;align-items:start}
+      .photo{width:180px;height:180px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#6fb3ff);color:white;font-weight:700;font-size:1.25rem}
+      .photo img{width:100%;height:100%;object-fit:cover;display:block}
+      h1{margin:0 0 0.25rem;font-size:1.6rem}
+      h2{margin:0 0 1rem;font-size:1rem;color:var(--muted)}
+      .meta{margin-top:0.8rem;color:var(--muted);font-size:0.95rem}
+      .btn{display:inline-block;margin-top:0.9rem;padding:0.6rem 1rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none}
+      .btn.secondary{background:transparent;color:var(--accent-2);border:1px solid rgba(11,118,239,0.12)}
+      .section{margin-top:1.25rem}
+      .label{font-weight:600;color:#123;margin-bottom:0.5rem}
+      .info{color:#123;line-height:1.6}
+      .contact-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem}
+      .pill{background:#eef6ff;border:1px solid rgba(11,118,239,0.08);padding:0.45rem 0.6rem;border-radius:8px;color:var(--accent-2);font-weight:600}
+      footer{margin-top:1.5rem;color:var(--muted);font-size:0.9rem}
+      @media (max-width:720px){.grid{grid-template-columns:1fr;}.photo{width:140px;height:140px;margin:0 auto;border-radius:10px}}
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <h1>Digitalia</h1>
-      <h2>Contact — Imène GOUBRID</h2>
-      <p><strong>Nom :</strong> Imène GOUBRID</p>
-      <p><strong>Affiliation (publique) :</strong> Université Paris Nanterre / MoDyCo</p>
-      <p>J'ai ajouté le lien public vers le profil LinkedIn ci‑dessous. Si vous voulez que j'ajoute une adresse e‑mail ou un numéro de téléphone, dites‑le moi et je l'ajouterai.</p>
-      <p><a class="button" href="https://www.linkedin.com/in/im%C3%A8ne-goubrid-b0b273136/" target="_blank" rel="noopener">Voir le profil LinkedIn</a></p>
-      <footer>
-        <p>Page créée automatiquement pour le dépôt "Digitalia" sur GitHub Pages.</p>
-      </footer>
+    <div class="container">
+      <div class="card">
+        <div class="grid">
+          <div>
+            <div class="photo" id="photo">
+              <!-- Placeholder initials used because LinkedIn photo is not publicly accessible -->
+              <span>IG</span>
+            </div>
+
+            <div class="meta">
+              <div style="margin-top:0.75rem"><strong>Affiliation :</strong><br>Université Paris Nanterre — MoDyCo</div>
+              <div style="margin-top:0.5rem"><strong>Statut public :</strong><br>Doctorante</div>
+
+              <div class="contact-row">
+                <a class="btn" href="mailto:gbrddigital@gmail.com">Envoyer un e‑mail</a>
+                <a class="btn secondary" href="https://www.linkedin.com/in/im%C3%A8ne-goubrid-b0b273136/" target="_blank" rel="noopener">Voir LinkedIn</a>
+                <div class="pill">gbrddigital@gmail.com</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h1>Imène GOUBRID</h1>
+            <h2>Learning Experience Designer | Cognitive Science | UX, Digital Learning & Data</h2>
+
+            <div class="section">
+              <div class="label">À propos</div>
+              <div class="info">Doctorante en sciences du langage à l'Université Paris Nanterre, membre du laboratoire MoDyCo. Intérêts : analyse de corpus, modélisation des dynamiques linguistiques, expérience d'apprentissage, design pédagogique et sciences cognitives appliquées au numérique.</div>
+            </div>
+
+            <div class="section">
+              <div class="label">Domaines</div>
+              <div class="info">Learning Experience Design, UX pour l'apprentissage, sciences cognitives appliquées, analyse de données éducatives, conception de parcours digitaux d'apprentissage.</div>
+            </div>
+
+            <div class="section">
+              <div class="label">Contact</div>
+              <div class="info">Vous pouvez me contacter par e‑mail : <a href="mailto:gbrddigital@gmail.com">gbrddigital@gmail.com</a> ou via LinkedIn (bouton ci‑dessus).</div>
+            </div>
+
+            <footer>Page créée automatiquement — dépôt GitHub : gbrddigital-crypto/Digitalia</footer>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      // If you later add a real photo file at /photo.jpg in the repo, this script will replace the placeholder automatically.
+      (function(){
+        var img = new Image();
+        img.src = '/photo.jpg';
+        img.onload = function(){
+          var photo = document.getElementById('photo');
+          photo.innerHTML = '';
+          img.alt = 'Photo de Imène GOUBRID';
+          photo.appendChild(img);
+        };
+      })();
+    </script>
   </body>
 </html>

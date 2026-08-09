@@ -1,91 +1,622 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Digitalia — Imène GOUBRID</title>
-    <style>
-      :root{--bg:#f4f6fb;--card:#ffffff;--accent:#0b76ef;--accent-2:#084a9b;--muted:#6b7280}
-      *{box-sizing:border-box}
-      body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#0b1f3a}
-      .container{max-width:980px;margin:3.5rem auto;padding:1rem}
-      .card{background:var(--card);border-radius:12px;padding:2rem;box-shadow:0 14px 40px rgba(11,19,35,0.06)}
-      .grid{display:grid;grid-template-columns:220px 1fr;gap:1.5rem;align-items:start}
-      .photo{width:180px;height:180px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#6fb3ff);color:white;font-weight:700;font-size:1.25rem}
-      .photo img{width:100%;height:100%;object-fit:cover;display:block}
-      h1{margin:0 0 0.25rem;font-size:1.6rem}
-      h2{margin:0 0 1rem;font-size:1rem;color:var(--muted)}
-      .meta{margin-top:0.8rem;color:var(--muted);font-size:0.95rem}
-      .btn{display:inline-block;margin-top:0.9rem;padding:0.6rem 1rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none}
-      .btn.secondary{background:transparent;color:var(--accent-2);border:1px solid rgba(11,118,239,0.12)}
-      .section{margin-top:1.25rem}
-      .label{font-weight:600;color:#123;margin-bottom:0.5rem}
-      .info{color:#123;line-height:1.6}
-      .contact-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem}
-      .pill{background:#eef6ff;border:1px solid rgba(11,118,239,0.08);padding:0.45rem 0.6rem;border-radius:8px;color:var(--accent-2);font-weight:600}
-      footer{margin-top:1.5rem;color:var(--muted);font-size:0.9rem}
-      @media (max-width:720px){.grid{grid-template-columns:1fr;}.photo{width:140px;height:140px;margin:0 auto;border-radius:10px}}
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="card">
-        <div class="grid">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digit@lIA — Intelligence Artificielle & Transformation Digitale</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0A1628;
+  --blue:   #1B4FD8;
+  --azure:  #2B7FFF;
+  --sky:    #E8F1FF;
+  --white:  #FFFFFF;
+  --slate:  #F0F4FF;
+  --gray:   #64748B;
+  --dark:   #1E293B;
+  --border: rgba(27,79,216,.14);
+  --mid:    #94A3B8;
+  --purple: #7C3AED;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;font-weight:400;background:var(--white);color:var(--dark);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:999;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:66px;
+}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:#fff;
+}
+.nav-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;color:var(--navy);letter-spacing:-.01em}
+.nav-brand .at{color:var(--azure);font-size:.7em;vertical-align:super;line-height:0}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--gray);text-decoration:none;transition:color .2s;letter-spacing:.01em}
+.nav-links a:hover{color:var(--blue)}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.btn-ghost{font-size:.78rem;font-weight:500;color:var(--blue);padding:.48rem 1rem;border:1.5px solid var(--blue);border-radius:8px;background:transparent;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-ghost:hover{background:var(--sky)}
+.btn-cta{font-size:.78rem;font-weight:600;color:#fff;padding:.5rem 1.1rem;background:var(--blue);border-radius:8px;border:none;cursor:pointer;transition:background .2s;text-decoration:none}
+.btn-cta:hover{background:#1640c0}
+
+/* HERO */
+.hero{
+  background:var(--navy);
+  padding:5rem 3rem 4rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(124,58,237,.25),transparent 70%);
+}
+.hero-grid-deco{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(43,127,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(43,127,255,.06) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.35);
+  border-radius:20px;padding:.32rem .9rem;
+  font-size:.72rem;font-weight:500;color:#C4B5FD;
+  letter-spacing:.04em;margin-bottom:1.75rem;position:relative;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 8px #4ADE80}
+.hero h1{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2.6rem,5vw,4rem);color:#fff;
+  line-height:1.08;letter-spacing:-.02em;
+  max-width:780px;margin:0 auto 1.25rem;
+  position:relative;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#A78BFA,#5B9BFF);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.brand-hero{font-family:'Syne',sans-serif;font-weight:800;color:#fff;white-space:nowrap}
+.brand-hero .at{font-size:.55em;vertical-align:super;line-height:0;color:#A78BFA}
+.hero-sub{
+  font-size:1rem;color:#94A3B8;line-height:1.75;
+  max-width:560px;margin:0 auto 2.5rem;position:relative;
+}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-hero-p{
+  font-size:.85rem;font-weight:600;padding:.75rem 1.75rem;
+  background:linear-gradient(135deg,var(--azure),var(--purple));color:#fff;border:none;border-radius:10px;
+  cursor:pointer;transition:all .2s;box-shadow:0 4px 24px rgba(124,58,237,.35);
+}
+.btn-hero-p:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(124,58,237,.45)}
+.btn-hero-s{
+  font-size:.85rem;font-weight:500;padding:.75rem 1.75rem;
+  background:rgba(255,255,255,.09);color:#C8D8F0;border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;cursor:pointer;transition:all .2s;
+}
+.btn-hero-s:hover{background:rgba(255,255,255,.14)}
+.hero-stats{
+  display:flex;gap:2.5rem;justify-content:center;margin-top:3.5rem;
+  padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.08);
+  position:relative;
+}
+.hstat{text-align:center}
+.hstat-n{font-family:'Syne',sans-serif;font-weight:700;font-size:1.8rem;color:#fff}
+.hstat-l{font-size:.72rem;color:#64748B;letter-spacing:.04em;margin-top:2px}
+
+/* SECTIONS */
+.section{padding:5rem 3rem}
+.section-center{text-align:center;max-width:660px;margin:0 auto 3.5rem}
+.eyebrow{
+  display:inline-block;font-size:.68rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--azure);margin-bottom:.85rem;
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-weight:700;
+  font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);
+  line-height:1.15;letter-spacing:-.02em;margin-bottom:.85rem;
+}
+.section-sub{font-size:.9rem;color:var(--gray);line-height:1.8}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.srv-card{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:16px;padding:1.75rem 1.5rem;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.srv-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.srv-card:hover{border-color:rgba(124,58,237,.3);box-shadow:0 8px 32px rgba(124,58,237,.1);transform:translateY(-2px)}
+.srv-card:hover::before{transform:scaleX(1)}
+.srv-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--sky);display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+}
+.srv-icon svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.srv-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:var(--navy);margin-bottom:.6rem}
+.srv-desc{font-size:.82rem;color:var(--gray);line-height:1.75;margin-bottom:1.1rem}
+.srv-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-size:.68rem;font-weight:500;padding:.22rem .65rem;border-radius:6px;background:var(--sky);color:var(--blue)}
+
+/* PROCESS */
+.how-bg{background:var(--slate)}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;position:relative}
+.steps-grid::before{
+  content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),var(--border),transparent);
+  z-index:0;
+}
+.step-item{text-align:center;position:relative;z-index:1}
+.step-num{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--white);border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.1rem;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--blue);
+  box-shadow:0 2px 12px rgba(27,79,216,.1);
+}
+.step-title{font-family:'Syne',sans-serif;font-weight:600;font-size:.92rem;color:var(--navy);margin-bottom:.4rem}
+.step-desc{font-size:.78rem;color:var(--gray);line-height:1.65}
+
+/* DASHBOARD APERÇU */
+.demo-bg{background:var(--navy);padding:5rem 3rem}
+.demo-wrap{
+  max-width:900px;margin:0 auto;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;overflow:hidden;
+}
+.demo-bar{
+  background:rgba(255,255,255,.06);padding:.65rem 1.1rem;
+  display:flex;align-items:center;gap:.6rem;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.dot{width:10px;height:10px;border-radius:50%}
+.dot.r{background:#FF5F57}.dot.y{background:#FFBD2E}.dot.g{background:#28C840}
+.demo-url{
+  flex:1;background:rgba(255,255,255,.06);border-radius:6px;
+  padding:.25rem .75rem;font-size:.72rem;color:#475569;letter-spacing:.02em;
+  margin-left:.5rem;
+}
+.demo-body{display:grid;grid-template-columns:200px 1fr;min-height:420px}
+.demo-sidebar{
+  background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.06);
+  padding:1.25rem 0;
+}
+.sidebar-logo{
+  padding:.25rem 1.25rem 1.25rem;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#fff;
+  display:flex;align-items:center;gap:.5rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  margin-bottom:.75rem;
+}
+.sidebar-logo-mark{
+  width:26px;height:26px;border-radius:7px;
+  background:linear-gradient(135deg,var(--azure),var(--purple));
+  display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff
+}
+.sidebar-at{font-size:.6em;vertical-align:super;line-height:0;color:#A78BFA}
+.sidebar-section{padding:.5rem 1.25rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#334155;margin-bottom:.3rem}
+.sidebar-item{
+  display:flex;align-items:center;gap:.65rem;padding:.55rem 1.25rem;
+  font-size:.78rem;color:#64748B;cursor:pointer;transition:all .2s;
+}
+.sidebar-item:hover,.sidebar-item.active{background:rgba(124,58,237,.12);color:#C4B5FD}
+.sidebar-item.active{border-right:2px solid var(--purple)}
+.si-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.demo-main{padding:1.5rem 1.75rem;background:rgba(0,0,0,.15)}
+.dm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.dm-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff}
+.dm-sub{font-size:.72rem;color:#475569;margin-top:2px}
+.dm-btn{font-size:.7rem;font-weight:600;padding:.38rem .9rem;background:linear-gradient(135deg,var(--azure),var(--purple));color:#fff;border:none;border-radius:7px;cursor:pointer}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;margin-bottom:1.25rem}
+.kpi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.9rem 1rem}
+.kpi-n{font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;line-height:1}
+.kpi-l{font-size:.66rem;color:#475569;margin-top:3px}
+.kpi-delta{font-size:.65rem;color:#4ADE80;margin-top:3px}
+.dm-section{margin-bottom:1.25rem}
+.dm-label{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#334155;margin-bottom:.65rem}
+.prog-list{display:flex;flex-direction:column;gap:.5rem}
+.prog-item{display:flex;align-items:center;gap:.75rem}
+.prog-name{font-size:.75rem;color:#94A3B8;min-width:140px;flex-shrink:0}
+.prog-bar-wrap{flex:1;background:rgba(255,255,255,.06);border-radius:20px;height:6px}
+.prog-bar{height:6px;border-radius:20px;background:linear-gradient(90deg,var(--blue),var(--purple))}
+.prog-pct{font-size:.68rem;color:#475569;min-width:30px;text-align:right}
+
+/* TÉMOIGNAGES */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.testi-card{background:var(--slate);border-radius:14px;padding:1.5rem 1.35rem}
+.testi-stars{color:#F59E0B;font-size:.85rem;margin-bottom:.75rem;letter-spacing:2px}
+.testi-quote{font-size:.82rem;color:var(--dark);line-height:1.75;margin-bottom:1rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.65rem}
+.testi-avatar{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:600;color:#fff;flex-shrink:0;
+}
+.testi-name{font-size:.78rem;font-weight:600;color:var(--navy)}
+.testi-role{font-size:.7rem;color:var(--gray)}
+
+/* À PROPOS */
+.about-bg{background:var(--navy);padding:5rem 3rem;text-align:center}
+.about-chip{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25);
+  border-radius:20px;padding:.35rem 1rem;
+  font-size:.72rem;color:#C4B5FD;margin-bottom:1.75rem;
+}
+.about-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.75rem,3vw,2.5rem);color:#fff;
+  line-height:1.15;margin-bottom:1rem;
+}
+.about-body{font-size:.88rem;color:#64748B;line-height:1.85;max-width:600px;margin:0 auto 2rem}
+.creds-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.cred{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:.75rem 1.25rem;
+  font-size:.78rem;color:#94A3B8;
+  display:flex;align-items:center;gap:.5rem;
+}
+.cred-dot{width:7px;height:7px;border-radius:50%;background:var(--purple)}
+
+/* CTA FINAL */
+.cta-section{
+  background:linear-gradient(135deg,var(--blue) 0%,var(--purple) 100%);
+  padding:5rem 3rem;text-align:center;
+}
+.cta-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:.85rem;line-height:1.1}
+.cta-sub{font-size:.95rem;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.5rem;line-height:1.75}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-cta-w{font-size:.85rem;font-weight:600;padding:.8rem 2rem;background:#fff;color:var(--blue);border:none;border-radius:10px;cursor:pointer;transition:all .2s}
+.btn-cta-w:hover{background:#E8F1FF;transform:translateY(-1px)}
+.btn-cta-o{font-size:.85rem;font-weight:500;padding:.8rem 2rem;background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.3);border-radius:10px;cursor:pointer;transition:all .2s}
+.btn-cta-o:hover{border-color:rgba(255,255,255,.6)}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff}
+.foot-logo .at{color:var(--purple);font-size:.65em;vertical-align:super;line-height:0}
+.foot-links{display:flex;gap:1.75rem;list-style:none}
+.foot-links a{font-size:.75rem;color:#475569;text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:#94A3B8}
+.foot-copy{font-size:.72rem;color:#334155}
+
+@media(max-width:768px){
+  nav{padding:0 1.25rem}
+  .nav-links{display:none}
+  .hero,.section,.demo-bg,.about-bg,.cta-section{padding-left:1.25rem;padding-right:1.25rem}
+  .services-grid,.steps-grid,.testi-grid{grid-template-columns:1fr}
+  .demo-body{grid-template-columns:1fr}
+  .demo-sidebar{display:none}
+  .kpi-row{grid-template-columns:1fr 1fr}
+  .hero-stats{flex-direction:column;gap:1.25rem}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-mark">D@</div>
+    <span class="nav-brand">Digit<span class="at">@</span>lIA</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#processus">Comment ça marche</a></li>
+    <li><a href="#plateforme">Solutions IA</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#contact" class="btn-ghost">Prendre RDV</a>
+    <a href="#contact" class="btn-cta">Démarrer →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-deco"></div>
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Intelligence Artificielle · Transformation Digitale · France
+  </div>
+  <h1>Votre entreprise entre dans<br>l'ère de <em>l'Intelligence Artificielle</em></h1>
+  <p class="hero-sub">
+    <span class="brand-hero">Digit<span class="at">@</span>lIA</span> accompagne les dirigeants et entreprises dans leur transformation digitale grâce à l'IA — des stratégies concrètes, des outils puissants, des résultats mesurables.
+  </p>
+  <div class="hero-ctas">
+    <button class="btn-hero-p">Démarrer ma transformation</button>
+    <button class="btn-hero-s">Découvrir nos solutions</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-n">+60%</div>
+      <div class="hstat-l">de productivité gagnée avec l'IA</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">48h</div>
+      <div class="hstat-l">pour un premier audit IA livré</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">100%</div>
+      <div class="hstat-l">sur mesure selon votre secteur</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">FR · EN</div>
+      <div class="hstat-l">Accompagnement bilingue</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-center">
+    <span class="eyebrow">Nos services</span>
+    <h2 class="section-title">Tout ce qu'il faut pour<br>réussir votre virage IA</h2>
+    <p class="section-sub">Des prestations clés en main pour intégrer l'intelligence artificielle à votre activité, sans jargon technique et avec un retour sur investissement visible.</p>
+  </div>
+  <div class="services-grid">
+    <div class="srv-card">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      </div>
+      <div class="srv-title">Audit & Stratégie IA</div>
+      <p class="srv-desc">Analyse complète de votre organisation et identification des opportunités IA les plus rentables pour votre activité. Un plan d'action prioritaire, livré en 48h.</p>
+      <div class="srv-tags">
+        <span class="tag">Diagnostic</span>
+        <span class="tag">Feuille de route</span>
+        <span class="tag">ROI estimé</span>
+        <span class="tag">Priorisation</span>
+      </div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="srv-title">Intégration d'outils IA</div>
+      <p class="srv-desc">Déploiement et configuration des meilleurs outils IA pour vos équipes : automatisation des tâches répétitives, rédaction assistée, analyse de données, chatbots internes.</p>
+      <div class="srv-tags">
+        <span class="tag">ChatGPT / Claude</span>
+        <span class="tag">Automatisation</span>
+        <span class="tag">No-code IA</span>
+        <span class="tag">Formation équipe</span>
+      </div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="srv-title">Coaching Digital CEO</div>
+      <p class="srv-desc">Accompagnement personnalisé pour les dirigeants qui souhaitent maîtriser les outils IA, prendre les bonnes décisions stratégiques et piloter leur transformation avec confiance.</p>
+      <div class="srv-tags">
+        <span class="tag">1:1 dirigeant</span>
+        <span class="tag">Stratégie digitale</span>
+        <span class="tag">Veille IA</span>
+        <span class="tag">Suivi mensuel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="section how-bg" id="processus">
+  <div class="section-center">
+    <span class="eyebrow">Notre méthode</span>
+    <h2 class="section-title">De votre situation actuelle<br>à votre entreprise augmentée par l'IA</h2>
+    <p class="section-sub">Un accompagnement structuré en 4 étapes. Vous gardez le contrôle — nous apportons l'expertise.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-title">Diagnostic gratuit</div>
+      <p class="step-desc">Un entretien de 30 minutes pour comprendre votre activité, vos enjeux et identifier les gains rapides avec l'IA.</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-title">Feuille de route IA</div>
+      <p class="step-desc">Un plan d'action clair : quels outils, quelles tâches automatiser, dans quel ordre, avec quel budget prévisible.</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-title">Déploiement & formation</div>
+      <p class="step-desc">Mise en place des solutions et formation de vos équipes. Vous êtes opérationnels rapidement, sans dépendance.</p>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-title">Suivi & optimisation</div>
+      <p class="step-desc">Mesure des résultats, ajustements et veille technologique mensuelle pour rester à la pointe de l'IA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APERÇU SOLUTIONS -->
+<section class="demo-bg" id="plateforme">
+  <div style="text-align:center;margin-bottom:2.5rem">
+    <span class="eyebrow" style="color:#C4B5FD">Aperçu solutions</span>
+    <h2 class="section-title" style="color:#fff">Vos process automatisés<br>avec l'IA</h2>
+  </div>
+  <div class="demo-wrap">
+    <div class="demo-bar">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      <div class="demo-url">digitalIA.fr/dashboard</div>
+    </div>
+    <div class="demo-body">
+      <div class="demo-sidebar">
+        <div class="sidebar-logo">
+          <div class="sidebar-logo-mark">D@</div>
+          Digit<span class="sidebar-at">@</span>lIA
+        </div>
+        <div class="sidebar-section">Tableau de bord</div>
+        <div class="sidebar-item active"><div class="si-dot" style="background:#A78BFA"></div>Vue générale</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Automatisations</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Rapports IA</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Veille marché</div>
+        <div class="sidebar-section">Outils</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Assistant IA</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Générateur contenu</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Analyse données</div>
+        <div class="sidebar-item"><div class="si-dot" style="background:#64748B"></div>Paramètres</div>
+      </div>
+      <div class="demo-main">
+        <div class="dm-header">
           <div>
-            <div class="photo" id="photo">
-              <!-- Placeholder initials used because LinkedIn photo is not publicly accessible -->
-              <span>IG</span>
-            </div>
-
-            <div class="meta">
-              <div style="margin-top:0.75rem"><strong>Affiliation :</strong><br>Université Paris Nanterre — MoDyCo</div>
-              <div style="margin-top:0.5rem"><strong>Statut public :</strong><br>Doctorante</div>
-
-              <div class="contact-row">
-                <a class="btn" href="mailto:gbrddigital@gmail.com">Envoyer un e‑mail</a>
-                <a class="btn secondary" href="https://www.linkedin.com/in/im%C3%A8ne-goubrid-b0b273136/" target="_blank" rel="noopener">Voir LinkedIn</a>
-                <div class="pill">gbrddigital@gmail.com</div>
-              </div>
-            </div>
+            <div class="dm-title">Tableau de bord — Imène Goubrid · CEO</div>
+            <div class="dm-sub">Semaine 32 · 2026 — 12 automatisations actives</div>
           </div>
-
-          <div>
-            <h1>Imène GOUBRID</h1>
-            <h2>Learning Experience Designer | Cognitive Science | UX, Digital Learning & Data</h2>
-
-            <div class="section">
-              <div class="label">À propos</div>
-              <div class="info">Doctorante en sciences du langage à l'Université Paris Nanterre, membre du laboratoire MoDyCo. Intérêts : analyse de corpus, modélisation des dynamiques linguistiques, expérience d'apprentissage, design pédagogique et sciences cognitives appliquées au numérique.</div>
+          <button class="dm-btn">+ Nouvelle automatisation</button>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="kpi-n">18h</div>
+            <div class="kpi-l">Économisées cette semaine</div>
+            <div class="kpi-delta">↑ +3h vs semaine passée</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-n">94%</div>
+            <div class="kpi-l">Tâches automatisées</div>
+            <div class="kpi-delta">↑ +12% ce mois</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-n">12</div>
+            <div class="kpi-l">Outils IA actifs</div>
+            <div class="kpi-delta">+ 2 nouveaux</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-n">×3</div>
+            <div class="kpi-l">ROI estimé</div>
+            <div class="kpi-delta">vs investissement initial</div>
+          </div>
+        </div>
+        <div class="dm-section">
+          <div class="dm-label">Gains par domaine</div>
+          <div class="prog-list">
+            <div class="prog-item">
+              <div class="prog-name">Rédaction & contenu</div>
+              <div class="prog-bar-wrap"><div class="prog-bar" style="width:88%"></div></div>
+              <div class="prog-pct">88%</div>
             </div>
-
-            <div class="section">
-              <div class="label">Domaines</div>
-              <div class="info">Learning Experience Design, UX pour l'apprentissage, sciences cognitives appliquées, analyse de données éducatives, conception de parcours digitaux d'apprentissage.</div>
+            <div class="prog-item">
+              <div class="prog-name">Prospection commerciale</div>
+              <div class="prog-bar-wrap"><div class="prog-bar" style="width:74%"></div></div>
+              <div class="prog-pct">74%</div>
             </div>
-
-            <div class="section">
-              <div class="label">Contact</div>
-              <div class="info">Vous pouvez me contacter par e‑mail : <a href="mailto:gbrddigital@gmail.com">gbrddigital@gmail.com</a> ou via LinkedIn (bouton ci‑dessus).</div>
+            <div class="prog-item">
+              <div class="prog-name">Analyse & reporting</div>
+              <div class="prog-bar-wrap"><div class="prog-bar" style="width:65%"></div></div>
+              <div class="prog-pct">65%</div>
             </div>
-
-            <footer>Page créée automatiquement — dépôt GitHub : gbrddigital-crypto/Digitalia</footer>
+            <div class="prog-item">
+              <div class="prog-name">Service client IA</div>
+              <div class="prog-bar-wrap"><div class="prog-bar" style="width:52%"></div></div>
+              <div class="prog-pct">52%</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <script>
-      // If you later add a real photo file at /photo.jpg in the repo, this script will replace the placeholder automatically.
-      (function(){
-        var img = new Image();
-        img.src = '/photo.jpg';
-        img.onload = function(){
-          var photo = document.getElementById('photo');
-          photo.innerHTML = '';
-          img.alt = 'Photo de Imène GOUBRID';
-          photo.appendChild(img);
-        };
-      })();
-    </script>
-  </body>
+<!-- TÉMOIGNAGES -->
+<section class="section" style="background:var(--white)" id="temoignages">
+  <div class="section-center">
+    <span class="eyebrow">Ils nous font confiance</span>
+    <h2 class="section-title">Ce que disent<br>nos clients</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Grâce à Digit@lIA, j'ai automatisé 80% de ma prospection. Je consacre maintenant mon temps aux clients à fort potentiel. Le ROI a été visible dès le premier mois."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--blue)">SL</div>
+        <div>
+          <div class="testi-name">Sophie Laurent</div>
+          <div class="testi-role">CEO · Cabinet de conseil · Paris</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"L'audit IA a révélé des opportunités que je n'avais pas vues. En 3 mois, mon équipe de 5 personnes produit autant qu'une équipe de 12. L'IA est devenue notre avantage concurrentiel."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#7C3AED">MB</div>
+        <div>
+          <div class="testi-name">Marc Bertrand</div>
+          <div class="testi-role">Directeur · PME industrielle · Lyon</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Le coaching CEO m'a permis de comprendre l'IA sans jargon technique. Aujourd'hui je pilote ma transformation digitale avec confiance et je prends de meilleures décisions stratégiques."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#059669">NC</div>
+        <div>
+          <div class="testi-name">Nadia Chérif</div>
+          <div class="testi-role">PDG · Startup e-commerce · France</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section class="about-bg" id="about">
+  <div class="about-chip">
+    <span style="width:7px;height:7px;border-radius:50%;background:#4ADE80;display:inline-block"></span>
+    Fondatrice & CEO · Digit@lIA
+  </div>
+  <h2 class="about-title">L'IA au service<br>de votre ambition</h2>
+  <p class="about-body">
+    Digit@lIA est fondée par Imène Goubrid, experte en transformation digitale et intelligence artificielle appliquée aux entreprises. Forte d'une expérience en conseil stratégique et en déploiement d'outils IA, sa mission est simple : rendre l'intelligence artificielle accessible, compréhensible et rentable pour chaque dirigeant.
+  </p>
+  <div class="creds-row">
+    <div class="cred"><span class="cred-dot"></span>Experte IA & Digital</div>
+    <div class="cred"><span class="cred-dot"></span>CEO & Fondatrice</div>
+    <div class="cred"><span class="cred-dot"></span>Conseil stratégique</div>
+    <div class="cred"><span class="cred-dot"></span>Transformation digitale</div>
+    <div class="cred"><span class="cred-dot"></span>Basée en France</div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contact">
+  <h2 class="cta-title">Prête à transformer<br>votre entreprise avec l'IA ?</h2>
+  <p class="cta-sub">Commencez par un diagnostic gratuit de 30 minutes. Repartez avec un plan d'action concret, sans engagement.</p>
+  <div class="cta-btns">
+    <button class="btn-cta-w">Réserver mon diagnostic gratuit</button>
+    <button class="btn-cta-o">Nous écrire · contact@digitalIA.fr</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">Digit<span class="at">@</span>lIA</div>
+  <ul class="foot-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#processus">Méthode</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#">Mentions légales</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 Digit@lIA · Tous droits réservés</div>
+</footer>
+
+</body>
 </html>

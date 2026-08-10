@@ -118,11 +118,11 @@ a.btn-hero-p,a.btn-hero-s,a.btn-cta-w,a.btn-cta-o{display:inline-flex;align-item
 .about-bg{background:var(--navy);padding:5rem 3rem;text-align:center}
 .about-chip{display:none;align-items:center;gap:.5rem;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25);border-radius:20px;padding:.35rem 1rem;font-size:.72rem;color:#C4B5FD;margin-bottom:1.75rem;}
 .about-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.75rem,3vw,2.5rem);color:#fff;line-height:1.15;margin-bottom:1rem;}
-.about-body{font-size:.88rem;color:#64748B;line-height:1.85;max-width:600px;margin:0 auto .5rem}
+.about-body{font-size:.88rem;color:#64748B;line-height:1.85;max-width:600px;margin:0 auto 0}
 .creds-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
 .cred{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.75rem 1.25rem;font-size:.78rem;color:#94A3B8;display:flex;align-items:center;gap:.5rem;}
 .cred-dot{width:7px;height:7px;border-radius:50%;background:var(--purple)}
-.ceo-sig{display:inline-flex;align-items:center;gap:.75rem;margin-top:.5rem;margin-bottom:1rem;}
+.ceo-sig{display:inline-flex;align-items:center;gap:.75rem;margin-top:.15rem;margin-bottom:.25rem;}
 .ceo-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(124,58,237,.6);box-shadow:0 0 16px rgba(124,58,237,.4);}
 .ceo-info{text-align:left;}
 .ceo-name{font-size:.88rem;font-weight:600;color:#fff;}
@@ -410,15 +410,27 @@ const T = {
 };
 
 function setLang(lang) {
+  if (!T[lang]) return;
   const t = T[lang];
   document.querySelectorAll('[data-key]').forEach(el => {
-    if(t[el.dataset.key]) el.innerHTML = t[el.dataset.key];
+    const key = el.dataset.key;
+    if(t[key] !== undefined) el.innerHTML = t[key];
   });
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector('.lang-btn[onclick="setLang(\''+lang+'\')"]').classList.add('active');
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if(btn.getAttribute('onclick') === "setLang('" + lang + "')") {
+      btn.classList.add('active');
+    }
+  });
   document.documentElement.lang = lang;
   document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.body.style.fontFamily = lang === 'ar' ? "'Cairo','Arial',sans-serif" : "";
+  localStorage.setItem('lang', lang);
 }
+
+window.addEventListener('load', function() {
+  setLang(localStorage.getItem('lang') || 'fr');
+});
   // Initialiser en français par défaut
   setLang('fr');
   document.querySelector('.lang-btn[onclick="setLang('fr')"]').classList.add('active');
